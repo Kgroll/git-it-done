@@ -50,6 +50,7 @@ var displayRepos = function(repos, searchTerm) {
     repoContainerEl.textContent = "";
     repoSearchTerm.textContent = searchTerm;
 
+    
     //check if api returned any repos
     if (repos.length === 0) {
         repoContainerEl.textContent = "No repositories found.";
@@ -61,9 +62,12 @@ var displayRepos = function(repos, searchTerm) {
         //format repo name
         var repoName = repos[i].owner.login + "/" + repos[i].name;
 
-        //create a container for each repo
-        var repoEl = document.createElement("div");
+        //create a link for each repo
+        var repoEl = document.createElement("a");
         repoEl.classList = "list-item flex-row justify-space-between align-center";
+        repoEl.setAttribute("href", "./single-repo.html?repo=" + repoName);
+
+        
 
         //create a span element to hold repository name
         var titleEl = document.createElement("span");
